@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  padding: 20px;
+}
+.copy-rights {
+  color: white;
+}
+.contact {
+  color: white;
+}

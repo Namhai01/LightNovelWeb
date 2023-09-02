@@ -1,0 +1,72 @@
+.Detail_book {
+  display: flex;
+  flex-direction: column; /* Sắp xếp theo chiều dọc */
+}
+
+.book-container {
+  display: flex;
+  /* align-items: center; */
+  /* margin-bottom: 20px;  */
+}
+
+.book-image {
+  padding: 30px 0 30px 100px;
+  flex: 1; /* Ảnh chiếm một phần tử bên trái */
+}
+
+.book-info {
+  flex: 2; /* Thông tin sách chiếm phần tử bên phải */
+}
+
+.Detail_book_name {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 40px 0 30px 0;
+}
+
+/* ... (CSS trước đó) */
+
+.book-info {
+  flex: 2;
+  margin-left: 20px;
+}
+
+.right {
+  display: inline;
+  margin-left: 10px;
+}
+
+.Detail_book_name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.Detail_book_author,
+.Detail_book_genre {
+  margin-top: 10px;
+}
+
+.Detail_book_author p,
+.Detail_book_genre p {
+  margin: 0; /* Loại bỏ khoảng cách mặc định */
+}
+
+/* Thêm các quy tắc CSS cho các lớp khác theo cần thiết */
+
+/* Ví dụ: Để làm cho màu chữ của tác giả và thể loại là màu xanh */
+.Detail_book_author p,
+.Detail_book_genre p {
+  color: blue;
+}
+
+/* Để thay đổi font size cho thể loại */
+.Detail_book_genre p {
+  font-size: 14px;
+}
+.follow-button {
+  margin-top: 20px;
+  margin-bottom: 10px; /* Khoảng cách giữa nút "Theo dõi" và danh sách sách */
+}
+.read-button {
+  margin-right: 10px;
+}

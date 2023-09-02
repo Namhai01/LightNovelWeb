@@ -1,0 +1,89 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px 10px 30px;
+  background-color: #333;
+  color: #fff;
+}
+input:focus {
+  outline: none;
+  border: none;
+}
+
+.header-side {
+  display: flex;
+}
+.logo {
+  font-size: 24px;
+}
+.link {
+  text-decoration: none;
+  color: white;
+}
+.search-bar {
+  margin: 5px 10px 0 10px;
+  height: 30px;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px 6px 10px;
+  transition: border-color 0.3s;
+}
+
+.search-bar:hover {
+  border-color: #007bff; /* Thay đổi màu biên khi hover vào */
+}
+
+.dropdown-button {
+  background-color: #454546;
+  color: #fff;
+}
+
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.bar:last-child {
+  margin-bottom: 0;
+}
+
+/*----------------------------------------------------------------*/
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #ececec;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.toggle-button.dark {
+  background-color: #414040;
+}
+
+.toggle-button__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 14px;
+}
+/*------------*/
