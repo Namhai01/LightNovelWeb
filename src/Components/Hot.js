@@ -3,12 +3,18 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "../styles/Hot.css";
 import { Link } from "react-router-dom";
-function Hot({ data }) {
+import { get } from "../API/axiosClient";
+function Hot() {
   const [selectedBooks, setSelectedBooks] = useState([]);
+  const [rate, setRate] = useState([]);
 
   useEffect(() => {
     const storedBooks = JSON.parse(localStorage.getItem("selectedBook")) || [];
     setSelectedBooks(storedBooks);
+  }, []);
+
+  useEffect(() => {
+    get("/truyen/rate").then((rate) => setRate(rate.data.truyen));
   }, []);
 
   const handleBookClick = (book) => {
@@ -69,13 +75,13 @@ function Hot({ data }) {
         autoPlaySpeed={3000}
         itemClass="carousel-item"
       >
-        {data.map((book) => (
+        {rate.map((book) => (
           <div key={book._id} onClick={() => handleBookClick(book)}>
             <Link to={`/Truyen/${book.title.replace(/\s+/g, "-")}/${book._id}`}>
               <div className="item">
                 <img
                   className="img"
-                  src={book.img}
+                  src={book.image}
                   alt={book.title}
                   // style={{ maxWidth: "500" }}
                 />

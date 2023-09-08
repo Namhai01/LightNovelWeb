@@ -1,36 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/DetailBook.css";
+import { Rate } from "antd";
 // import { Rate } from "antd";
 function DetailBook() {
   const { id } = useParams();
-  const _id = parseInt(id, 10);
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const storedBooks = JSON.parse(localStorage.getItem("selectedBook"));
     if (storedBooks) {
-      const selectedBook = storedBooks.filter((book) => book._id === _id);
+      const selectedBook = storedBooks.filter((book) => book._id === id);
       if (selectedBook) {
         setData(selectedBook);
       }
     }
-  }, [_id]);
+  }, [id]);
 
   return (
     <div className="Detail_book">
       {data.map((book) => (
         <div key={book._id} className="book-container">
           <div className="book-image">
-            <img className="img" src={book.img} alt={book.title} />
+            <img className="img" src={book.image} alt={book.title} />
           </div>
           <div className="book-info">
             <div className="Detail_book_name">{book.title}</div>
             <div className="Detail_book_author">
-              Tác giả : <p className="right">{book.title}</p>
+              Tác giả : <p className="right">{book.author}</p>
             </div>
             <div className="Detail_book_author">
-              Thể loại : <p className="right">Light Novel</p>
+              Thể loại : <p className="right">{book.category}</p>
+            </div>
+            <div className="Detail_book_author">
+              Đánh giá : <Rate allowHalf disabled defaultValue={book.rate} />
             </div>
             <div className="Detail_book_author">
               Tóm tắt nội dung : <p>Light Novel</p>

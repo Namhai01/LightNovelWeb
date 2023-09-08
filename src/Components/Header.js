@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,10 +12,35 @@ import { Dropdown } from "antd";
 import { Link } from "react-router-dom";
 import { toggleDarkMode } from "../Redux/slice";
 import { useSelector, useDispatch } from "react-redux";
+import { postBody } from "../API/axiosClient";
 
 function Header() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTimeout, setSearchTimeout] = useState(null);
   const darkMode = useSelector((state) => state.darkMode.darkMode);
   const dispatch = useDispatch();
+
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    const inputText = event.target.value;
+    setSearchTerm(inputText);
+
+    if (searchTimeout) {
+      clearTimeout(searchTimeout);
+    }
+  };
+  useEffect(() => {
+    if (searchTerm.trim() !== "") {
+      setSearchTimeout(
+        setTimeout(() => {
+          // Gọi API ở đây với giá trị searchTerm
+          postBody("/truyen/find", { key: searchTerm }).then((res) =>
+            console.log(res)
+          );
+        }, 500)
+      );
+    }
+  }, [searchTerm]);
 
   const handleToggleDarkMode = () => {
     dispatch(toggleDarkMode());
@@ -68,7 +93,8 @@ function Header() {
           type="text"
           className="search-bar"
           placeholder="Nhập tên truyện ..."
-          autoComplete="off"
+          value={searchTerm}
+          onChange={handleInputChange}
         />
         <div className="dropdown">
           <Dropdown menu={{ items }} placement="bottomLeft" arrow>

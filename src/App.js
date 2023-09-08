@@ -7,7 +7,7 @@ import Footer from "./Components/Footer";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DetailBook from "./Pages/DetailBook";
-import NewBooks from "./Components/NewBooks";
+import MoreBooks from "./Components/MoreBooks";
 
 function App() {
   const darkMode = useSelector((state) => state.darkMode.darkMode);
@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Book />} />
         <Route path="/Truyen/theo-doi" element={<Theodoi />} />
-        <Route path="/Truyen/" element={<NewBooks />} />
+        <Route path="/Truyen/" element={<MoreBooks />} />
         <Route path="/Truyen/:ten/:id" element={<DetailBook />} />
         <Route path="/user/dang-nhap" element={<Auth />} />
       </Routes>

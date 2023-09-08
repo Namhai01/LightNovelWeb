@@ -6,6 +6,7 @@
   position: relative;
   overflow: hidden;
   width: 200px;
+  height: 280px;
   padding-left: 30px;
   transform: scale(1);
   cursor: pointer;

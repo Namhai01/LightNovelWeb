@@ -5,3 +5,10 @@
 .App.light {
   background-color: rgb(236, 236, 236);
 }
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

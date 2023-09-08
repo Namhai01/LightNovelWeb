@@ -4,9 +4,10 @@
 
 .img {
   max-width: 100%;
-  max-height: 100%;
+  /* max-height: 100%; */
   width: auto;
   height: auto;
+  object-fit: cover;
   transition: transform 0.5s ease;
   transform-origin: top left;
 }
@@ -28,6 +29,7 @@
 .new-item {
   position: relative;
   width: 200px;
+  height: 270px;
   overflow: hidden;
   transform: scale(1);
   cursor: pointer;
