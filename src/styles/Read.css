@@ -1,0 +1,37 @@
+/* CSS cho thành phần .Read */
+.Read {
+  /* width: 80%; */
+  flex-grow: 1;
+  overflow: hidden;
+}
+.chapter {
+  margin: 10px 10px 20px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff; /* Đặt màu nền */
+}
+.read_title {
+  text-align: center;
+}
+.content {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+/* CSS cho nút chuyển chapter */
+.Read .prev,
+.Read .next {
+  width: 50px;
+  background-color: rgb(81, 179, 245);
+}
+
+.Read .prev:disabled,
+.Read .next:disabled {
+  /* cursor: not-allowed;
+  color: #ccc; Màu chữ khi vô hiệu hóa nút Trước và Tiếp theo */
+}
+
+/* CSS cho thanh chọn chapter */
+.Read .select-chapter {
+  margin: 0 10px 0 10px;
+}

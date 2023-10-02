@@ -1,0 +1,15 @@
+.Editor {
+  padding: 0 0 20px 20px;
+  flex-grow: 1;
+}
+.ckEditor {
+  margin: auto;
+  width: 80%;
+}
+.ckEditor .bnt_form {
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+.btn:first-child {
+  margin-right: 20px;
+}

@@ -1,6 +1,7 @@
 .Detail_book {
   display: flex;
   flex-direction: column; /* Sắp xếp theo chiều dọc */
+  flex-grow: 1;
 }
 
 .book-container {
