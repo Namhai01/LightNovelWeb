@@ -7,14 +7,11 @@ import parse from "html-react-parser";
 import "../styles/Read.css";
 import { postBody } from "../API/axiosClient";
 function Read() {
-  const { id } = useParams();
-  const searchParams = new URLSearchParams(window.location.search);
-  const readType = searchParams.get("readType");
-  const [readTypeUsed, setReadTypeUsed] = useState(readType);
-  const [currentChapter, setCurrentChapter] = useState(1);
+  const { id, chapter } = useParams();
+  const [currentChapter, setCurrentChapter] = useState(chapter);
   const [totalChapters, setTotalChapters] = useState(1);
-  const [Bookchapter, setBookchapter] = useState({});
   const [BookContent, setBookContent] = useState("");
+  const [BookName, setBookName] = useState("");
   const [loading, setLoading] = useState(true);
 
   const updateCurrentChapter = (newChapter) => {
@@ -53,33 +50,15 @@ function Read() {
   };
 
   useEffect(() => {
-    if (readTypeUsed === "fromBeginning") {
-      postBody("/truyen/chapter/first", { id: id }).then((res) => {
+    postBody("/truyen/chapter", { id: id, chapter: currentChapter }).then(
+      (res) => {
+        setBookName(res.chapter.name);
         setTotalChapters(res.count);
-        setBookchapter(res.chapter);
         setBookContent(res.chapter.content);
         setLoading(false);
-      });
-      setReadTypeUsed(null);
-    } else if (readTypeUsed === "continueReading") {
-      postBody("/truyen/chapter/last", { id: id }).then((res) => {
-        setTotalChapters(res.count);
-        setCurrentChapter(res.chapter.chapter);
-        setBookchapter(res.chapter);
-        setBookContent(res.chapter.content);
-        setLoading(false);
-      });
-      setReadTypeUsed(null);
-    } else if (readTypeUsed === null) {
-      postBody("/truyen/chapter", { id: id, chapter: currentChapter }).then(
-        (res) => {
-          setBookchapter(res.chapter);
-          setBookContent(res.chapter.content);
-          setLoading(false);
-        }
-      );
-    }
-  }, [currentChapter, id, readTypeUsed]);
+      }
+    );
+  }, [chapter, currentChapter, id]);
 
   return (
     <div className="Read">
@@ -107,7 +86,7 @@ function Read() {
           <FontAwesomeIcon icon={faAngleRight} style={{ color: "#030303" }} />
         </Button>
       </div>
-      <div className="read_title">{Bookchapter?.name}</div>
+      <div className="read_title">{BookName}</div>
       {loading ? (
         <Spin size="large" />
       ) : (
@@ -118,9 +97,6 @@ function Read() {
           </div>
         </div>
       )}
-      {/* <div className="content">
-        <span>{parse(BookContent)}</span>
-      </div> */}
     </div>
   );
 }

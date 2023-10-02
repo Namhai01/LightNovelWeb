@@ -22,7 +22,7 @@ function App() {
         <Route path="/Truyen/theo-doi" element={<Theodoi />} />
         <Route path="/Truyen/" element={<MoreBooks />} />
         <Route path="/Truyen/:ten/:id" element={<DetailBook />} />
-        <Route path="/Truyen/:ten/:id/read" element={<Read />} />
+        <Route path="/Truyen/:ten/:id/chapter/:chapter" element={<Read />} />
         <Route path="/user/dang-nhap" element={<Auth />} />
       </Routes>
 

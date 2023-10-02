@@ -16,8 +16,10 @@ function DetailBook() {
         setData(selectedBook);
       }
     }
+    postBody("/truyen/chapter/last", { id: id }).then((res) =>
+      setChapter(res.chapter.chapter)
+    );
   }, [id]);
-
   const success = () => {
     messageApi.open({
       type: "success",
@@ -73,14 +75,14 @@ function DetailBook() {
                 <Link
                   to={`/Truyen/${book.title.replace(/\s+/g, "-")}/${
                     book._id
-                  }/read?readType=fromBeginning`}
+                  }/chapter/1`}
                 >
                   <button className="read-button">Đọc từ đầu</button>
                 </Link>
                 <Link
                   to={`/Truyen/${book.title.replace(/\s+/g, "-")}/${
                     book._id
-                  }/read?readType=continueReading`}
+                  }/chapter/${chapter}`}
                 >
                   <button className="read-button">Đọc tiếp</button>
                 </Link>
